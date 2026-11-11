@@ -1,0 +1,28 @@
+{
+  "name": "aid-testbeds-live",
+  "version": "1.0.0",
+  "description": "Automated end-to-end live interactive playtest suite and multi-script testbeds for AI Dungeon",
+  "main": "testbeds/triad-waterfall/run.js",
+  "scripts": {
+    "test": "npm run testbed:triad",
+    "test:all": "npm run testbed:triad && npm run testbed:autocards && npm run testbed:waterfall",
+    "testbed:triad": "node testbeds/triad-waterfall/run.js",
+    "testbed:autocards": "node testbeds/autocards/run.js",
+    "testbed:waterfall": "node testbeds/waterfall/run.js"
+  },
+  "keywords": [
+    "ai-dungeon",
+    "interactive-fiction",
+    "testbeds",
+    "e2e",
+    "playtesting",
+    "integration-tests",
+    "multi-script",
+    "waterfall"
+  ],
+  "author": "Randy Viosca (@Random_Variable on AI Dungeon)",
+  "license": "MIT",
+  "dependencies": {
+    "aid-connector": "file:../aid-connector"
+  }
+}
