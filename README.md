@@ -3,6 +3,7 @@
 ![AID-Testbeds-Live Hero Banner](assets/hero-banner.jpg)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Specification: AMS v1.1.0](https://img.shields.io/badge/spec-AMS%20v1.1.0-purple.svg)](https://github.com/viosca/aid-modules/blob/main/SPECIFICATION.md)
 [![Status: Operational](https://img.shields.io/badge/Status-100%25%20Verified-brightgreen.svg)]()
 
 > Automated end-to-end live interactive playtesting suite and multi-script testbeds for **AI Dungeon**.
