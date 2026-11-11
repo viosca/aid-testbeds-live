@@ -93,8 +93,23 @@ async function main() {
 
     // Complete continue turns for card generation if requested
     if (ecText.includes("please select \"continue\"")) {
-        await driveContinues(client, adv.id, adv.shortId, 4);
+        await driveContinues(client, adv.id, adv.shortId, 8);
     }
+
+    // 4b. Step 2b: Downstream Command Passthrough to Script 3 (/ie)
+    console.log("\n==================================================================");
+    console.log("  STEP 2b: Downstream Command Passthrough to Script 3 (/ie)");
+    console.log("==================================================================");
+    const ieTurn = await sendTurn(client, adv.id, adv.shortId, "/ie -v");
+    const ieText = ieTurn.actionWindow.slice(-2).map(a => a.text).join("\n");
+    assert(ieText.includes("/IE version -> Inner Entity"), "Script 3 must receive and process /ie -v passed down from Script 1 and Script 2");
+    console.log("  ✓ /ie -v passed cleanly through Script 1 and Script 2 and was processed by Script 3.");
+
+    const ieDiagTurn = await sendTurn(client, adv.id, adv.shortId, "/ie -i");
+    const ieDiagText = ieDiagTurn.actionWindow.slice(-2).map(a => a.text).join("\n");
+    const ieDiagMsg = ieDiagTurn.gameState?.message || "";
+    assert(ieDiagText.includes("/IE info -> Inner Entity Diagnostics:") || ieDiagMsg.includes("/IE info -> Inner Entity Diagnostics:"), "Script 3 must output cognitive engine diagnostics for /ie -i");
+    console.log("  ✓ /ie -i returned cognitive engine diagnostics from Script 3.");
 
     // 5. Step 3: Story Card Coexistence
     console.log("\n==================================================================");
