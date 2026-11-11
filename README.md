@@ -1,5 +1,7 @@
 # 🧪 AID-Testbeds-Live
 
+![AID-Testbeds-Live Hero Banner](assets/hero-banner.jpg)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Status: Operational](https://img.shields.io/badge/Status-100%25%20Verified-brightgreen.svg)]()
 
