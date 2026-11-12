@@ -18,7 +18,7 @@ async function main() {
 
     console.log("==================================================================");
     console.log("  TESTBED: AUTONOMOUS CARD GENERATION & CONTEXT INJECTION");
-    console.log("  Cascade: AID-Getopt Router (3MdjmiOipsOx) -> Entity-Cards (_X5-3ouDjE10)");
+    console.log("  Cascade: AID-Getopt Router (Ka2D5sBoDFnn) -> Entity-Cards (05_w3s9zrrvt)");
     console.log("==================================================================");
 
     // 1. Create scenario and attach published Router and Entity-Cards
@@ -32,10 +32,10 @@ async function main() {
     const scnId = scnRes.scenario.shortId;
     console.log(`  Scenario ID: ${scnId}`);
 
-    console.log("  Attaching Script 1: AID-Getopt Router (3MdjmiOipsOx)...");
-    await client.attachScenarioScript(scnId, "3MdjmiOipsOx");
-    console.log("  Attaching Script 2: Entity-Cards (_X5-3ouDjE10)...");
-    await client.attachScenarioScript(scnId, "_X5-3ouDjE10");
+    console.log("  Attaching Script 1: AID-Getopt Router (Ka2D5sBoDFnn)...");
+    await client.attachScenarioScript(scnId, "Ka2D5sBoDFnn");
+    console.log("  Attaching Script 2: Entity-Cards (05_w3s9zrrvt)...");
+    await client.attachScenarioScript(scnId, "05_w3s9zrrvt");
 
     // 2. Play adventure
     console.log("2. Spawning test adventure...");
@@ -117,7 +117,7 @@ async function main() {
         }
     }`, { id: adv.shortId });
 
-    const routerState = fullAdv.adventure.gameState?.scripts?.["3MdjmiOipsOx"]?.GetoptSandbox || fullAdv.adventure.gameState?.GetoptSandbox || {};
+    const routerState = fullAdv.adventure.gameState?.scripts?.["Ka2D5sBoDFnn"]?.GetoptSandbox || fullAdv.adventure.gameState?.GetoptSandbox || {};
     const capturedCtx = routerState.lastContext || "";
     console.log(`\nCaptured Model Context Length: ${capturedCtx.length} chars`);
 

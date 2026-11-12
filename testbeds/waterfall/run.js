@@ -78,7 +78,7 @@ modifier(text);`;
     });
     const scnId = scnRes.scenario.shortId;
     await client.updateScenario({ shortId: scnId, scriptsEnabled: true });
-    await client.attachScenarioScript(scnId, "_X5-3ouDjE10");
+    await client.attachScenarioScript(scnId, "05_w3s9zrrvt");
 
     const advRes = await client.playAdventure(scnId);
     const adv = advRes.adventure;
@@ -129,8 +129,8 @@ async function runCase3(client) {
     await client.updateScenario({ shortId: hostId, scriptsEnabled: true });
 
     // Attach both scripts
-    await client.attachScenarioScript(hostId, "3MdjmiOipsOx"); // AID-Getopt Router
-    await client.attachScenarioScript(hostId, "_X5-3ouDjE10");  // Entity-Cards v2.8.0
+    await client.attachScenarioScript(hostId, "Ka2D5sBoDFnn"); // AID-Getopt Router
+    await client.attachScenarioScript(hostId, "05_w3s9zrrvt");  // Entity-Cards v2.8.0
 
     const advRes = await client.playAdventure(hostId);
     const adv = advRes.adventure;
