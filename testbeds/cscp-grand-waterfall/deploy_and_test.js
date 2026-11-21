@@ -189,6 +189,15 @@ async function main() {
     console.log("  Turn 4 Result:\n" + t4Text);
     assert(t4Text.includes("/EC version") || t4Text.includes("Entity Cards") || t4Text.includes("2.8.0"), "Step 6.4 Failed: EC version missing");
 
+    // 9b. Verification Turn 4b: Slot 3 Entity-Cards abort command (/ec -a)
+    console.log("\n==================================================================");
+    console.log("  [Step 6.4b] Slot 3: /ec -a (Entity-Cards Abort via Waterfall)");
+    console.log("==================================================================");
+    const t4b = await sendTurn(client, adv.id, adv.shortId, "/ec -a");
+    const t4bText = getTurnText(t4b);
+    console.log("  Turn 4b Result:\n" + t4bText);
+    assert(t4bText.includes("/EC abort") || t4bText.includes("No card generation"), "Step 6.4b Failed: EC abort missing");
+
     // 10. Verification Turn 5: Slot 4 Inner-Entity version & info
     console.log("\n==================================================================");
     console.log("  [Step 6.5] Slot 4: /ie -v (Inner-Entity via Waterfall)");
