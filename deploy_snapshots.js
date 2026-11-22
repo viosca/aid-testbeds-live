@@ -19,6 +19,29 @@
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
+
+// Automatically load local .env file in aid-testbeds-live
+function loadLocalEnv() {
+    const envPath = path.resolve(__dirname, ".env");
+    if (fs.existsSync(envPath)) {
+        const content = fs.readFileSync(envPath, "utf8");
+        for (const line of content.split(/\r?\n/)) {
+            const trimmed = line.trim();
+            if (!trimmed || trimmed.startsWith("#")) continue;
+            const eqIdx = trimmed.indexOf("=");
+            if (eqIdx !== -1) {
+                const key = trimmed.slice(0, eqIdx).trim();
+                let val = trimmed.slice(eqIdx + 1).trim();
+                if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+                    val = val.slice(1, -1);
+                }
+                process.env[key] = val;
+            }
+        }
+    }
+}
+loadLocalEnv();
+
 const { AIDClient } = require("aid-connector");
 const { sleep } = require("./shared/runner-utils");
 
@@ -57,8 +80,8 @@ function parseArgs() {
         optScenario: process.env.AID_SCENARIO_GETOPT || "",
         ecPath: process.env.AID_PATH_ENTITY_CARDS || path.resolve(__dirname, "../Entity-Cards/src/library.js"),
         iePath: process.env.AID_PATH_INNER_ENTITY || path.resolve(__dirname, "../Inner-Entity/dist/inner-self-minds-only.js"),
-        modPath: process.env.AID_PATH_MODULES || path.resolve(__dirname, "../aid-modules/dist/library-aid-modules.js"),
-        optPath: process.env.AID_PATH_GETOPT || path.resolve(__dirname, "../aid-getopt/dist/library-aid-getopt.js"),
+        modPath: process.env.AID_PATH_MODULES || path.resolve(__dirname, "../aid-modules/library-aid-modules.js"),
+        optPath: process.env.AID_PATH_GETOPT || path.resolve(__dirname, "../aid-getopt/library-aid-getopt.js"),
         targets: new Set()
     };
 
